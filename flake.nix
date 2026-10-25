@@ -8,7 +8,7 @@
     let
 
       deskDir = ./hosts/desktop;
-      laptopDir = ./hosts/desktop;
+      laptopDir = ./hosts/laptop;
 
     in {
       # Desktop Configuration
