@@ -9,6 +9,7 @@
 
       deskDir = ./hosts/desktop;
       laptopDir = ./hosts/laptop;
+      commonDir = ./common/modules;
 
     in {
       # Desktop Configuration
@@ -17,6 +18,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           "${deskDir}/configuration.nix"
+          "${commonDir}/packages.nix"
         ];
       };
 
@@ -26,6 +28,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           "${laptopDir}/configuration.nix"
+          "${commonDir}/packages.nix"
         ];
       };
   };

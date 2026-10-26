@@ -12,10 +12,16 @@ packages = with pkgs; [
   # E
   
   # F
+  fish
   
   # G
+  git
+  grok-build
+  ghostty
   
   # H
+  hyprlauncher
+  helix
   
   # I
   
@@ -28,6 +34,7 @@ packages = with pkgs; [
   # M
   
   # N
+  nixd
   
   # O
   
@@ -38,8 +45,10 @@ packages = with pkgs; [
   # R
   
   # S
+  steam
   
   # T
+  tree
   
   # U
   
@@ -52,5 +61,7 @@ packages = with pkgs; [
   # Y
   
   # Z
+  zig
+  zls
   
 ];
