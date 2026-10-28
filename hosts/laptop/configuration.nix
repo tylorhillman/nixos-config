@@ -75,21 +75,10 @@
     isNormalUser = true;
     description = "Tylor Hillman";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-	hyprland
-	hyprlauncher
-	helix
-	zig
-	grok-build
-	kitty
-	git
-	ghostty
+    packages = [
+      # None yet
     ];
   };
-
-  # Install Programs.
-  programs.firefox.enable = true;
-  programs.hyprland.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
