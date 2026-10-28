@@ -3,13 +3,24 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-  };
-  outputs = { self, nixpkgs, ... }@inputs:
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+};
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
 
       deskDir = ./hosts/desktop;
       laptopDir = ./hosts/laptop;
       commonDir = ./common/modules;
+      homeDir = ./common/home;
+
+      commonModules = map (file: commonDir + "/${file}") (
+        builtins.filter (file: nixpkgs.lib.hasSuffix ".nix" file) (
+            builtins.attrNames (builtins.readDir commonDir)
+        )
+    );
 
     in {
       # Desktop Configuration
@@ -17,9 +28,15 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          "${deskDir}/configuration.nix"
-          "${commonDir}/packages.nix"
-        ];
+          "${deskDir}/configuration.nix" # Host specific configs
+           home-manager.nixosModules.home-manager # home-manager specific configs
+           {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.tylor = "${homeDir}/tylor.nix";
+          }
+        ] ++ commonModules; # common configs for all flakes
       };
 
       # Laptop Configuration
@@ -27,9 +44,15 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          "${laptopDir}/configuration.nix"
-          "${commonDir}/packages.nix"
-        ];
-      };
+          "${laptopDir}/configuration.nix" # Host specific configs
+           home-manager.nixosModules.home-manager # home-manager specific configs
+           {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.tylor = "${homeDir}/tylor.nix";
+          }
+        ] ++ commonModules; # common configs for all flakes
+    };
   };
 }

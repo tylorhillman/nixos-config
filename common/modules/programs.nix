@@ -1,6 +1,9 @@
-{ pkgs }:
+# programs.nix
 
-packages = with pkgs; [
+{ pkgs, ... }:
+
+{
+  environment.systemPackages = with pkgs; [
   # A
   
   # B
@@ -8,11 +11,13 @@ packages = with pkgs; [
   # C
   
   # D
+  discord
   
   # E
   
   # F
   fish
+  firefox
   
   # G
   git
@@ -22,6 +27,7 @@ packages = with pkgs; [
   # H
   hyprlauncher
   helix
+  hexchat
   
   # I
   
@@ -37,11 +43,13 @@ packages = with pkgs; [
   nixd
   
   # O
+  odin
+  ols
   
   # P
   
   # Q
-  
+
   # R
   
   # S
@@ -63,5 +71,10 @@ packages = with pkgs; [
   # Z
   zig
   zls
-  
-];
+
+  ];
+
+  # Enabling Programs
+  programs.firefox.enable = true;
+  programs.hyprland.enable = true;
+}
