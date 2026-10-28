@@ -27,9 +27,9 @@
   # H
   hyprlauncher
   helix
-  hexchat
   
   # I
+  irssi
   
   # J
   
@@ -47,6 +47,7 @@
   ols
   
   # P
+  pi-coding-agent
   
   # Q
 
@@ -54,6 +55,7 @@
   
   # S
   steam
+  senpai
   
   # T
   tree
@@ -63,6 +65,7 @@
   # V
   
   # W
+  weechat
   
   # X
   
