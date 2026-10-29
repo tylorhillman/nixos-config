@@ -68,6 +68,7 @@
   
   # W
   weechat
+  wl-clipboard
   
   # X
   
