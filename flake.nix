@@ -33,7 +33,13 @@
            {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              host = {
+                name = "niikusu-desktop";
+                monitor = "2560x1440@143.98Hz";
+              };
+            };
             home-manager.users.tylor = "${homeDir}/tylor.nix";
           }
         ] ++ commonModules; # common configs for all flakes
@@ -49,7 +55,13 @@
            {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              host = {
+                name = "niikusu-laptop";
+                monitor = "preferred";
+              };
+            };
             home-manager.users.tylor = "${homeDir}/tylor.nix";
           }
         ] ++ commonModules; # common configs for all flakes

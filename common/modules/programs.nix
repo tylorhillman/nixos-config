@@ -30,7 +30,8 @@
   
   # I
   irssi
-  
+  ibm-plex
+    
   # J
   
   # K
@@ -48,6 +49,7 @@
   
   # P
   pi-coding-agent
+  pass
   
   # Q
 
