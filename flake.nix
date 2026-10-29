@@ -33,6 +33,7 @@
            {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "bak";
             home-manager.extraSpecialArgs = {
               inherit inputs;
               host = {
@@ -55,6 +56,7 @@
            {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "bak";
             home-manager.extraSpecialArgs = {
               inherit inputs;
               host = {

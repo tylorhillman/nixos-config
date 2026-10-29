@@ -23,6 +23,7 @@
   git
   grok-build
   ghostty
+  gnupg
   
   # H
   hyprlauncher
@@ -50,6 +51,7 @@
   # P
   pi-coding-agent
   pass
+  pinentry-curses
   
   # Q
 
@@ -83,4 +85,8 @@
   # Enabling Programs
   programs.firefox.enable = true;
   programs.hyprland.enable = true;
+  programs.steam.enable = true;
+
+  # Setting UWSM so that way it can serve a fake "desktop"
+  programs.hyprland.withUWSM = true;
 }
