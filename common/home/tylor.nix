@@ -4,18 +4,23 @@
 
 let
 
-  cfgs = map (file: ./configs + "/${file}") (
-    builtins.filter (file: inputs.nixpkgs.lib.hasSuffix ".nix" file) (
-        builtins.attrNames (builtins.readDir ./configs)
+  nixFiles = dir: suffix:
+    map (file: dir + "/${file}") (
+      builtins.filter (file: inputs.nixpkgs.lib.hasSuffix suffix file) (
+        builtins.attrNames (builtins.readDir dir)
       )
-); 
-  
+    );
+
+  cfgs = nixFiles ./configs ".nix";
+  # Palette files live beside these and are imported directly, not as modules.
+  themes = nixFiles ./themes "-theme.nix";
+
 in
 {
   home.username = "tylor";
   home.homeDirectory = "/home/tylor";
 
-  imports = cfgs;
+  imports = cfgs ++ themes;
   
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

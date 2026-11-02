@@ -18,6 +18,8 @@
   # F
   fish
   firefox
+  fastfetch
+  file
   
   # G
   git
@@ -28,21 +30,27 @@
   # H
   hyprlauncher
   helix
+  hyprpaper
   
   # I
   irssi
   ibm-plex
+  imagemagick
     
   # J
   
   # K
   
   # L
+  lua
+  lua-language-server
   
   # M
   
   # N
   nixd
+  noto-fonts-cjk-sans
+  nerd-fonts.blex-mono
   
   # O
   odin
@@ -56,13 +64,16 @@
   # Q
 
   # R
+  rofi
   
   # S
   steam
   senpai
+  swaylock-effects
+  starship
   
   # T
-  tree
+  tre-command
   
   # U
   
@@ -71,10 +82,12 @@
   # W
   weechat
   wl-clipboard
+  waybar
   
   # X
   
   # Y
+  yazi
   
   # Z
   zig
@@ -86,6 +99,7 @@
   programs.firefox.enable = true;
   programs.hyprland.enable = true;
   programs.steam.enable = true;
+  programs.starship.enable = true;
 
   # Setting UWSM so that way it can serve a fake "desktop"
   programs.hyprland.withUWSM = true;

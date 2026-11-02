@@ -1,0 +1,122 @@
+* {
+    font: "IBM Plex Mono 12";
+    background-color: transparent;
+    text-color: #d4cfc6;
+    border-color: #e07a3d;
+
+    bg: #0a0c10;
+    surface: #14181e;
+    fg: #d4cfc6;
+    muted: #6a6560;
+    accent: #e07a3d;
+    night: #3d5a6c;
+    amber: #d4a574;
+    cream: #f0e6d0;
+    sel: #324858;
+}
+
+window {
+    width: 934px;
+    height: 404px;
+    location: center;
+    border: 2px;
+    border-radius: 3px;
+    border-color: @accent;
+    background-color: transparent;
+    padding: 0px;
+}
+
+mainbox {
+    orientation: horizontal;
+    children: [ "imagebox", "contentbox" ];
+    spacing: 0px;
+    padding: 0px;
+}
+
+imagebox {
+    expand: false;
+    width: 570px;
+    height: 400px;
+    background-image: url("jinja-rofi.jpg", both);
+    background-color: @bg;
+    padding: 0px;
+}
+
+contentbox {
+    orientation: vertical;
+    children: [ "inputbar", "listview" ];
+    width: 360px;
+    spacing: 0px;
+    padding: 0px;
+    expand: true;
+}
+
+inputbar {
+    children: [ "prompt", "entry" ];
+    background-color: @surface;
+    padding: 8px 10px;
+    spacing: 8px;
+}
+
+prompt {
+    enabled: true;
+    font: "Noto Sans CJK JP 13";
+    text-color: @accent;
+    background-color: transparent;
+    padding: 0px;
+}
+
+textbox-prompt-colon {
+    enabled: false;
+    str: "";
+}
+
+entry {
+    font: "IBM Plex Mono 12";
+    text-color: @fg;
+    background-color: transparent;
+    placeholder-color: @muted;
+    padding: 0px;
+    expand: true;
+}
+
+listview {
+    lines: 10;
+    background-color: rgba(20, 24, 30, 0.94);
+    padding: 6px;
+    spacing: 2px;
+    scrollbar: true;
+}
+
+scrollbar {
+    handle-color: @accent;
+    background-color: @night;
+    handle-width: 4px;
+}
+
+element {
+    padding: 4px 6px;
+    spacing: 8px;
+    border-radius: 3px;
+    background-color: transparent;
+}
+
+element-icon {
+    size: 16px;
+    background-color: transparent;
+}
+
+element-text {
+    text-color: @amber;
+    background-color: transparent;
+    vertical-align: 0.5;
+}
+
+element selected {
+    background-color: @sel;
+    text-color: @cream;
+}
+
+element selected element-text {
+    text-color: @cream;
+}

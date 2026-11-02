@@ -1,8 +1,6 @@
 { ... }:
 
 {
-  xdg.configFile."fish/conf.d/gpg.fish".text = ''
-    set -gx GPG_TTY (tty)
-    gpg-connect-agent --quiet updatestartuptty /bye >/dev/null
-  '';
+  xdg.configFile."fish/config.fish".source = ../dotfiles/fish/config.fish;
+  xdg.configFile."fish/conf.d/gpg.fish".source = ../dotfiles/fish/gpg.fish;
 }

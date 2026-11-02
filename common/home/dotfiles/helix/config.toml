@@ -1,0 +1,4 @@
+theme = "jinja"
+
+[editor.lsp]
+display-inlay-hints = true

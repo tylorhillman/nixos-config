@@ -1,0 +1,9 @@
+configuration {
+    modi: "drun,run";
+    show-icons: true;
+    font: "IBM Plex Mono 12";
+    display-drun: "検索";
+    display-run: "検索";
+}
+
+@theme "theme.rasi"

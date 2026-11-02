@@ -1,0 +1,86 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = true
+palette = "jinja"
+
+# Segmented pill: cool user@host, amber path, cream git.
+# The closing cap matches whichever segment is last.
+format = """
+[](fg:cool)\
+$username\
+$hostname\
+[](fg:cool bg:amber)\
+$directory\
+$git_branch\
+$git_status\
+${custom.cap}\
+${custom.cap_nogit}\
+$line_break\
+[╰─](fg:accent)$character
+"""
+
+[palettes.jinja]
+background = "#0a0c10"
+surface = "#14181e"
+foreground = "#d4cfc6"
+accent = "#e07a3d"
+accent_secondary = "#c45c3a"
+blue = "#6595b2"
+green = "#6b9b77"
+amber = "#d4a574"
+highlight = "#f0e6d0"
+cool = "#324858"
+
+[username]
+show_always = true
+format = "[ $user]($style)"
+style_user = "fg:accent bg:cool bold"
+style_root = "fg:accent_secondary bg:cool bold"
+
+[hostname]
+ssh_only = false
+format = "[@$hostname ]($style)"
+style = "fg:accent bg:cool"
+
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+truncate_to_repo = false
+fish_style_pwd_dir_length = 1
+format = "[ $path ]($style)"
+style = "fg:background bg:amber"
+
+[git_branch]
+symbol = ""
+format = "[](fg:amber bg:highlight)[ $branch](fg:background bg:highlight)"
+
+[git_status]
+format = "[ $all_status$ahead_behind](fg:background bg:highlight)"
+conflicted = "="
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+untracked = "?"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+
+# Closes the pill in highlight when this is a git repo.
+[custom.cap]
+when = "git rev-parse --is-inside-work-tree"
+shell = "sh"
+command = "true"
+format = "[](fg:highlight)"
+
+# Closes the pill in amber otherwise.
+[custom.cap_nogit]
+when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1 && exit 1 || exit 0"
+shell = "sh"
+command = "true"
+format = "[](fg:amber)"
+
+[character]
+format = "$symbol "
+success_symbol = "[❯](fg:accent bold)"
+error_symbol = "[❯](fg:accent_secondary bold)"

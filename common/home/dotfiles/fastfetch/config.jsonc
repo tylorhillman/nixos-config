@@ -1,0 +1,28 @@
+{
+  "logo": {
+    "type": "kitty",
+    "source": "$HOME/.config/fastfetch/ascii-shrine-maiden.png",
+    "width": 14,
+    "height": 10,
+    "padding": {
+      "top": 1,
+      "right": 2
+    }
+  },
+  "display": {
+    "separator": " -> " // Customizes the spacer between keys and values
+  },
+  "modules": [
+    "title",
+    "separator",
+    "os",
+    "host",
+    "shell",
+    "de",
+    "wm",
+    "cpu",
+    "gpu",
+    "memory",
+    "break"
+  ]
+}
