@@ -20,6 +20,7 @@
   firefox
   fastfetch
   file
+  flameshot
   
   # G
   git
@@ -27,10 +28,12 @@
   ghostty
   gnupg
   
+  
   # H
   hyprlauncher
   helix
   hyprpaper
+  hyprshot
   
   # I
   irssi

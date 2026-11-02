@@ -1,0 +1,111 @@
+# Jinja
+
+"ui.background" = {} # transparent mode
+"ui.text" = "foreground"
+"ui.text.focus" = "highlight"
+"ui.background.separator" = { fg = "muted" }
+"ui.cursor" = { fg = "background", bg = "accent" }
+"ui.cursor.primary" = { fg = "background", bg = "accent" }
+"ui.cursor.match" = { fg = "soft_amber", modifiers = ["bold", "underlined"] }
+"ui.cursorline" = { bg = "selection" }
+"ui.cursorline.primary" = { bg = "selection" }
+"ui.cursorline.secondary" = { bg = "selection" }
+"ui.selection" = { bg = "night_blue" }
+"ui.selection.primary" = { bg = "night_blue" }
+"ui.highlight" = { fg = "background", bg = "soft_amber" }
+"ui.linenr" = { fg = "muted" }
+"ui.linenr.selected" = { fg = "highlight" }
+"ui.gutter" = { bg = "surface" }
+"ui.statusline" = { fg = "highlight", bg = "night_blue" }
+"ui.statusline.inactive" = { fg = "foreground", bg = "night_blue", modifiers = ["dim"] }
+"ui.statusline.normal" = { fg = "background", bg = "accent", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "background", bg = "blue", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "background", bg = "soft_amber", modifiers = ["bold"] }
+"ui.popup" = {} # transparent mode
+"ui.popup.info" = { fg = "foreground", bg = "night_blue" }
+"ui.window" = {} # transparent mode 
+"ui.help" = { fg = "foreground", bg = "night_blue" }
+"ui.menu" = {} # transparent mode
+"ui.menu.selected" = { fg = "background", bg = "accent" }
+"ui.menu.scroll" = { fg = "foreground", bg = "night_blue" }
+"ui.virtual" = { fg = "muted" }
+"ui.virtual.whitespace" = { fg = "muted" }
+"ui.virtual.ruler" = { bg = "night_blue" }
+"ui.virtual.indent-guide" = { fg = "muted" }
+"ui.virtual.inlay-hint" = { fg = "muted" }
+"ui.virtual.jump-label" = { fg = "background", bg = "accent", modifiers = ["bold"] }
+"ui.bufferline" = { fg = "muted", bg = "surface" }
+"ui.bufferline.active" = { fg = "highlight", bg = "night_blue" }
+
+"comment" = { fg = "muted", modifiers = ["italic"] }
+"keyword" = "accent"
+"keyword.control" = "accent"
+"keyword.directive" = "accent_secondary"
+"operator" = "accent"
+"punctuation" = "muted"
+"punctuation.delimiter" = "muted"
+"variable" = "foreground"
+"variable.builtin" = "accent"
+"variable.parameter" = { fg = "highlight", modifiers = ["italic"] }
+"variable.other.member" = "soft_amber"
+"function" = "soft_amber"
+"function.macro" = "highlight"
+"function.builtin" = "soft_amber"
+"constructor" = "soft_amber"
+"type" = "blue"
+"type.builtin" = "blue"
+"type.enum.variant" = "teal"
+"namespace" = { fg = "blue", modifiers = ["italic"] }
+"attribute" = { fg = "soft_amber", modifiers = ["italic"] }
+"tag" = "accent"
+"special" = "accent"
+"label" = "soft_amber"
+"string" = "green"
+"string.regexp" = "teal"
+"string.special" = "soft_amber"
+"constant" = "rose"
+"constant.builtin" = "accent"
+"constant.numeric" = "soft_amber"
+"constant.character.escape" = "teal"
+
+"markup.heading" = { fg = "accent", modifiers = ["bold"] }
+"markup.heading.marker" = "muted"
+"markup.list" = "accent"
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "blue", modifiers = ["underlined"] }
+"markup.link.text" = "soft_amber"
+"markup.quote" = "muted"
+"markup.raw" = "green"
+
+"diff.plus" = "green"
+"diff.minus" = "accent_secondary"
+"diff.delta" = "soft_amber"
+
+"diagnostic" = { modifiers = ["underlined"] }
+"diagnostic.error" = { underline = { color = "accent_secondary", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "soft_amber", style = "curl" } }
+"diagnostic.info" = { underline = { color = "blue", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "muted", style = "curl" } }
+"error" = "accent_secondary"
+"warning" = "soft_amber"
+"info" = "blue"
+"hint" = "muted"
+
+[palette]
+background = "#0a0c10"
+surface = "#14181e"
+foreground = "#d4cfc6"
+muted = "#6a6560"
+accent = "#e07a3d"
+accent_secondary = "#c45c3a"
+night_blue = "#3d5a6c"
+foliage = "#4a6b52"
+soft_amber = "#d4a574"
+highlight = "#f0e6d0"
+blue = "#6595b2"
+green = "#6b9b77"
+teal = "#7eaba6"
+rose = "#c98496"
+selection = "#324858"

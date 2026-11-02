@@ -3,25 +3,32 @@
     "type": "kitty",
     "source": "$HOME/.config/fastfetch/ascii-shrine-maiden.png",
     "width": 14,
-    "height": 10,
+    "height": 12,
     "padding": {
       "top": 1,
-      "right": 2
+      "right": 1
     }
   },
   "display": {
-    "separator": " -> " // Customizes the spacer between keys and values
+    "separator": " -> ",
+    "color": {
+      "keys": "#c45c3a",
+      "title": "#d4a574"
+    }
   },
   "modules": [
     "title",
     "separator",
     "os",
-    "host",
+    "break",
     "shell",
-    "de",
+    "break",
     "wm",
+    "break",
     "cpu",
+    "break",
     "gpu",
+    "break",
     "memory",
     "break"
   ]

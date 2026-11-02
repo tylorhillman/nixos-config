@@ -39,6 +39,7 @@
               host = {
                 name = "niikusu-desktop";
                 monitor = "2560x1440@143.98Hz";
+                term-font-size = 22;
               };
             };
             home-manager.users.tylor = "${homeDir}/tylor.nix";
@@ -62,6 +63,7 @@
               host = {
                 name = "niikusu-laptop";
                 monitor = "preferred";
+                term-font-size = 14;
               };
             };
             home-manager.users.tylor = "${homeDir}/tylor.nix";
