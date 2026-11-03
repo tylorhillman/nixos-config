@@ -1,6 +1,6 @@
 return {
-    terminal    = "ghostty",
-    fileManager = "ghostty -e yazi",
+    terminal    = "kitty",
+    fileManager = "kitty yazi",
     menu        = "rofi -show drun",
     browser     = "firefox",
 }

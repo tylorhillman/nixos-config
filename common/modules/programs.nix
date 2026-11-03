@@ -43,6 +43,7 @@
   # J
   
   # K
+  kitty
   
   # L
   lua
@@ -103,7 +104,7 @@
   programs.hyprland.enable = true;
   programs.steam.enable = true;
   programs.starship.enable = true;
-
+  
   # Setting UWSM so that way it can serve a fake "desktop"
   programs.hyprland.withUWSM = true;
 }
