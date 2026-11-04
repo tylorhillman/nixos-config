@@ -64,6 +64,7 @@
   pi-coding-agent
   pass
   pinentry-curses
+  pavucontrol
   
   # Q
 
