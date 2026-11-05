@@ -7,6 +7,7 @@
   # A
   
   # B
+  bootdev-cli
   
   # C
   
@@ -23,6 +24,7 @@
   flameshot
   
   # G
+  go
   git
   grok-build
   ghostty
@@ -90,6 +92,7 @@
   waybar
   
   # X
+  xxd
   
   # Y
   yazi
