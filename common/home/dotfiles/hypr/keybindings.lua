@@ -21,7 +21,69 @@ hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
-hl.bind(mainMod .. " + SHIFT + X", hl.dsp.exec_cmd("hyprshot --clipboard-only -m region"))
+
+-- Swap the focused window with its neighbor, as in Omarchy.
+for _, direction in ipairs({ "left", "right", "up", "down" }) do
+    hl.bind(mainMod .. " + SHIFT + " .. direction, hl.dsp.window.swap({ direction = direction }))
+end
+
+-- Omarchy-style keyboard resizing: physical -/= keys, with three step sizes.
+for _, step in ipairs({ { "", 100 }, { "ALT + ", 25 }, { "CTRL + ", 300 } }) do
+    local mod, size = step[1], step[2]
+    hl.bind(mainMod .. " + " .. mod .. "code:20", hl.dsp.window.resize({ x = -size, y = 0, relative = true }))
+    hl.bind(mainMod .. " + " .. mod .. "code:21", hl.dsp.window.resize({ x = size, y = 0, relative = true }))
+    hl.bind(mainMod .. " + SHIFT + " .. mod .. "code:20", hl.dsp.window.resize({ x = 0, y = -size, relative = true }))
+    hl.bind(mainMod .. " + SHIFT + " .. mod .. "code:21", hl.dsp.window.resize({ x = 0, y = size, relative = true }))
+end
+
+-- Cycle each workspace through dwindle, scrolling and floating.  Remember which
+-- windows we floated so independently floating dialogs stay floating afterward.
+local workspace_modes = {}
+local mode_tag = "workspace-mode-floated"
+local function arrange_mode_window(window, floating)
+    local claimed = false
+    for _, tag in ipairs(window.tags or {}) do
+        if tag == mode_tag then claimed = true end
+    end
+    if floating and not window.floating and (window.fullscreen or 0) == 0 then
+        hl.dispatch(hl.dsp.window.tag({ tag = "+" .. mode_tag, window = window }))
+        hl.dispatch(hl.dsp.window.float({ action = "on", window = window }))
+    elseif not floating and claimed and not window.pinned then
+        hl.dispatch(hl.dsp.window.tag({ tag = "-" .. mode_tag, window = window }))
+        hl.dispatch(hl.dsp.window.float({ action = "off", window = window }))
+    end
+end
+
+function cycle_workspace_mode(back)
+    local workspace = hl.get_active_workspace()
+    if not workspace or not workspace.id or workspace.id < 1 then return end
+    local id = tostring(workspace.id)
+    local modes = { "dwindle", "scrolling", "floating" }
+    local current = workspace_modes[id] or "dwindle"
+    local index = 1
+    for i, mode in ipairs(modes) do if mode == current then index = i end end
+    local next_mode = modes[((index - 1 + (back and -1 or 1)) % #modes) + 1]
+    workspace_modes[id] = next_mode
+    if next_mode ~= "floating" then
+        hl.workspace_rule({ workspace = id, layout = next_mode })
+    end
+    for _, window in ipairs(hl.get_workspace_windows(id)) do
+        arrange_mode_window(window, next_mode == "floating")
+    end
+    hl.dispatch(hl.dsp.exec_cmd("notify-send 'Workspace layout' '" .. next_mode .. "'"))
+end
+
+hl.on("window.open", function(window)
+    local id = window.workspace and tostring(window.workspace.id)
+    if workspace_modes[id] == "floating" then arrange_mode_window(window, true) end
+end)
+hl.on("window.move_to_workspace", function(window, workspace)
+    hl.timer(function()
+        arrange_mode_window(window, workspace_modes[tostring(workspace.id)] == "floating")
+    end, { type = "oneshot", timeout = 1 })
+end)
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprctl eval 'cycle_workspace_mode(false)'"))
+hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("hyprctl eval 'cycle_workspace_mode(true)'"))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
