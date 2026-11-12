@@ -2,7 +2,7 @@
 
 let
   path = .././wallpapers;
-  file = "/jinja.jpg";
+  file = "/midnight-miami.png";
   background = path + file;
 
 in {
